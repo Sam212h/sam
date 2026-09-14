@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sahyog Animal Welfare Society — Medical & Food Help for Street Animals</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #EDE8DA;
+    --bg-soft: #E3DCC9;
+    --ink: #2B2620;
+    --ink-muted: #6B6252;
+    --marigold: #D98E2B;
+    --teal: #234B43;
+    --rose: #B85C57;
+    --line: rgba(43,38,32,0.14);
+    --radius: 4px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    letter-spacing:-0.01em;
+    line-height:1.1;
+  }
+  a{color:inherit;}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:1080px; margin:0 auto; padding:0 28px;}
+
+  /* NAV */
+  nav{
+    position:sticky; top:0; z-index:10;
+    background:var(--bg);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    height:64px;
+  }
+  .brand{
+    font-family:'Fraunces',serif;
+    font-size:1.15rem;
+    font-weight:600;
+  }
+  .brand span{color:var(--marigold);}
+  nav ul{list-style:none; display:flex; gap:28px;}
+  nav a{text-decoration:none; font-size:0.92rem; color:var(--ink-muted);}
+  nav a:hover{color:var(--ink);}
+  .nav-cta{
+    background:var(--teal); color:#fff; padding:8px 18px;
+    border-radius:var(--radius); text-decoration:none; font-size:0.9rem;
+  }
+
+  /* HERO */
+  .hero{padding:72px 0 56px;}
+  .hero .wrap{
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:56px; align-items:center;
+  }
+  .hero h1{font-size:2.9rem; max-width:12ch;}
+  .hero p.lead{
+    margin-top:20px; font-size:1.08rem; color:var(--ink-muted); max-width:42ch;
+  }
+  .hero-actions{margin-top:32px; display:flex; gap:14px; flex-wrap:wrap;}
+  .btn{
+    display:inline-block; padding:13px 24px; border-radius:var(--radius);
+    text-decoration:none; font-size:0.95rem; font-weight:500;
+  }
+  .btn-primary{background:var(--marigold); color:#fff;}
+  .btn-outline{border:1px solid var(--ink); color:var(--ink);}
+  .hero-art{
+    aspect-ratio:4/5; border-radius:var(--radius);
+    background:
+      radial-gradient(circle at 30% 25%, rgba(217,142,43,0.35), transparent 55%),
+      radial-gradient(circle at 70% 70%, rgba(35,75,67,0.35), transparent 55%),
+      var(--bg-soft);
+    position:relative; overflow:hidden;
+    border:1px solid var(--line);
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px;
+  }
+  .hero-art svg{width:44px; height:44px; opacity:0.55;}
+  .hero-art span{font-size:0.8rem; color:var(--ink-muted);}
+
+  /* STATS STRIP */
+  .stats{border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:28px 0;}
+  .stats .wrap{display:flex; gap:48px; flex-wrap:wrap;}
+  .stat b{font-family:'Fraunces',serif; font-size:1.6rem; font-weight:600; display:block;}
+  .stat span{font-size:0.85rem; color:var(--ink-muted);}
+
+  /* SECTION HEADS */
+  section{padding:64px 0;}
+  .section-head{max-width:52ch; margin-bottom:36px;}
+  .section-head h2{font-size:1.9rem;}
+  .section-head p{color:var(--ink-muted); margin-top:10px;}
+
+  /* GALLERY */
+  .gallery-embed{
+    border:1px solid var(--line); border-radius:var(--radius);
+    background:var(--bg-soft); overflow:hidden;
+  }
+  .gallery-embed iframe{width:100%; height:520px; border:0; display:block;}
+  .gallery-note{
+    margin-top:14px; font-size:0.85rem; color:var(--ink-muted);
+  }
+  .gallery-placeholder{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:2px;
+    background:var(--line);
+  }
+  .gallery-placeholder div{
+    aspect-ratio:1; background:var(--bg-soft);
+    display:flex; align-items:center; justify-content:center;
+    font-size:0.75rem; color:var(--ink-muted); text-align:center; padding:8px;
+  }
+
+  /* DONATE */
+  .donate-card{
+    background:var(--teal); color:#F5F1E6;
+    border-radius:var(--radius); padding:44px;
+    display:grid; grid-template-columns:1fr auto; gap:40px; align-items:center;
+  }
+  .donate-card h2{color:#fff; font-size:1.7rem;}
+  .donate-card p{color:#CFE0DA; margin-top:10px; max-width:36ch;}
+  .qr-box{
+    background:#fff; padding:18px; border-radius:var(--radius);
+    text-align:center; width:210px;
+  }
+  .qr-box .qr-placeholder{
+    width:100%; aspect-ratio:1; background:repeating-linear-gradient(45deg,#e2e2e2,#e2e2e2 6px,#f4f4f4 6px,#f4f4f4 12px);
+    border-radius:2px; margin-bottom:12px;
+  }
+  .upi-id{
+    font-family:monospace; font-size:0.95rem; color:var(--ink);
+    display:flex; align-items:center; justify-content:center; gap:8px;
+  }
+  .copy-btn{
+    background:var(--marigold); color:#fff; border:none; padding:6px 10px;
+    border-radius:3px; font-size:0.75rem; cursor:pointer;
+  }
+  .copy-btn:hover{opacity:0.9;}
+
+  /* STORY */
+  .story-card{
+    display:grid; grid-template-columns:0.85fr 1.15fr; gap:36px;
+    border:1px solid var(--line); border-radius:var(--radius); overflow:hidden;
+  }
+  .story-photo{
+    background:var(--bg-soft); position:relative; min-height:220px;
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px;
+  }
+  .story-photo svg{width:32px; height:32px; opacity:0.5;}
+  .story-photo span{font-size:0.78rem; color:var(--ink-muted);}
+  .story-body{padding:28px 28px 28px 0;}
+  .story-body .story-name{
+    font-family:'Fraunces',serif; font-size:1.3rem; margin-bottom:8px;
+  }
+  .story-body p{color:var(--ink-muted); font-size:0.95rem;}
+  @media (max-width:760px){
+    .story-card{grid-template-columns:1fr;}
+    .story-body{padding:20px;}
+  }
+
+  /* HOW IT WORKS */
+  .steps{display:grid; grid-template-columns:repeat(3,1fr); gap:32px;}
+  .step h3{font-size:1.1rem; margin-bottom:8px;}
+  .step p{color:var(--ink-muted); font-size:0.92rem;}
+  .step-mark{
+    width:34px; height:34px; border-radius:50%;
+    border:1px solid var(--ink); display:flex; align-items:center; justify-content:center;
+    font-family:'Fraunces',serif; font-size:0.95rem; margin-bottom:16px;
+  }
+
+  /* CONTACT */
+  footer{border-top:1px solid var(--line); padding:44px 0; margin-top:20px;}
+  footer .wrap{
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;
+  }
+  footer .contact-line{color:var(--ink-muted); font-size:0.9rem;}
+  footer .contact-line a{color:var(--ink); text-decoration:underline;}
+
+  @media (max-width:760px){
+    .hero .wrap{grid-template-columns:1fr;}
+    .hero h1{font-size:2.2rem; max-width:none;}
+    .donate-card{grid-template-columns:1fr; text-align:left;}
+    .qr-box{margin:0 auto;}
+    .steps{grid-template-columns:1fr;}
+    nav ul{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">Sahyog <span>Animal Welfare</span></div>
+    <ul>
+      <li><a href="#updates">Gallery</a></li>
+      <li><a href="#story">Recent rescue</a></li>
+      <li><a href="#donate">Donate</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a class="nav-cta" href="#donate">Help now</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <h1>Every street animal deserves food and a chance to heal.</h1>
+      <p class="lead">We feed and treat street dogs and cats in our area. This site shows exactly what that looks like — nothing staged.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#donate">Support with a donation</a>
+        <a class="btn btn-outline" href="#updates">See today's updates</a>
+      </div>
+    </div>
+    <div class="hero-art">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.5 12.5c1.1 0 2-1.1 2-2.5S5.6 7.5 4.5 7.5 2.5 8.6 2.5 10s.9 2.5 2 2.5zm5-3c1.1 0 2-1.2 2-2.75S10.6 4 9.5 4 7.5 5.2 7.5 6.75 8.4 9.5 9.5 9.5zm5 0c1.1 0 2-1.2 2-2.75S15.6 4 14.5 4s-2 1.2-2 2.75 1 2.75 2 2.75zm4.5 3c1.1 0 2-1.1 2-2.5S20.1 7.5 19 7.5s-2 1.1-2 2.5.9 2.5 2 2.5zm-7 1c-2.5 0-6 1.5-6 4.2 0 1 .8 1.8 1.8 1.8.9 0 1.4-.5 2.5-.5s1.2.7 2.7.7 1.6-.7 2.7-.7 1.6.5 2.5.5c1 0 1.8-.8 1.8-1.8 0-2.7-3.5-4.2-6-4.2z"/></svg>
+      <span>Add a photo of a rescued animal here</span>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="wrap">
+    <div class="stat"><b>Regular</b><span>Feeding rounds</span></div>
+    <div class="stat"><b>100%</b><span>Goes directly to care</span></div>
+    <div class="stat"><b>Photo/Video</b><span>Gallery of our work</span></div>
+  </div>
+</div>
+
+<section id="updates">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Gallery</h2>
+      <p>Real updates, straight from the ground.</p>
+    </div>
+
+    <div class="gallery-embed">
+      <!--
+        REPLACE THIS: put your public Google Drive folder link below.
+        1. Create a Drive folder, set sharing to "Anyone with the link".
+        2. Get the folder ID from the URL: drive.google.com/drive/folders/FOLDER_ID
+        3. Replace FOLDER_ID below.
+        Uploading a new photo/video to that folder = it shows here automatically.
+      -->
+      <iframe src="https://drive.google.com/embeddedfolderview?id=FOLDER_ID#grid" loading="lazy"></iframe>
+    </div>
+    <p class="gallery-note">New photos and videos added whenever we're out on rounds.</p>
+  </div>
+</section>
+
+<section id="story">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Recent rescue</h2>
+      <p>One animal, one update — added whenever there's a story worth sharing, not on a fixed schedule.</p>
+    </div>
+    <div class="story-card">
+      <div class="story-photo">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.5 12.5c1.1 0 2-1.1 2-2.5S5.6 7.5 4.5 7.5 2.5 8.6 2.5 10s.9 2.5 2 2.5zm5-3c1.1 0 2-1.2 2-2.75S10.6 4 9.5 4 7.5 5.2 7.5 6.75 8.4 9.5 9.5 9.5zm5 0c1.1 0 2-1.2 2-2.75S15.6 4 14.5 4s-2 1.2-2 2.75 1 2.75 2 2.75zm4.5 3c1.1 0 2-1.1 2-2.5S20.1 7.5 19 7.5s-2 1.1-2 2.5.9 2.5 2 2.5zm-7 1c-2.5 0-6 1.5-6 4.2 0 1 .8 1.8 1.8 1.8.9 0 1.4-.5 2.5-.5s1.2.7 2.7.7 1.6-.7 2.7-.7 1.6.5 2.5.5c1 0 1.8-.8 1.8-1.8 0-2.7-3.5-4.2-6-4.2z"/></svg>
+        <span>Add this animal's photo</span>
+      </div>
+      <div class="story-body">
+        <div class="story-name">Name / short title</div>
+        <p>Short 2-3 line story: what happened, what care was given, how the animal is doing now. Replace with a real update whenever you have one.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="donate">
+  <div class="wrap">
+    <div class="donate-card">
+      <div>
+        <h2>Send help directly</h2>
+        <p>No payment gateway, no cut taken. Scan the code or use the UPI ID — it reaches us the same minute.</p>
+      </div>
+      <div class="qr-box">
+        <div class="qr-placeholder"></div>
+        <div class="upi-id">
+          <span id="upiId">yourname@upi</span>
+          <button class="copy-btn" onclick="navigator.clipboard.writeText(document.getElementById('upiId').textContent)">Copy</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <h2>How your help is used</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-mark">1</div>
+        <h3>Feeding rounds</h3>
+        <p>Daily food for street dogs and cats in the area, covered on a fixed route.</p>
+      </div>
+      <div class="step">
+        <div class="step-mark">2</div>
+        <h3>Medical care</h3>
+        <p>Injured or sick animals are treated first — wounds, infections, basic medicine.</p>
+      </div>
+      <div class="step">
+        <div class="step-mark">3</div>
+        <h3>Gallery</h3>
+        <p>Photos and videos from our rounds, posted here directly.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="brand">Sahyog <span>Animal Welfare</span></div>
+    <div class="contact-line">Questions or want to help in person? <a href="tel:+910000000000">Call us</a></div>
+  </div>
+</footer>
+
+</body>
+</html>
